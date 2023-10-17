@@ -22,20 +22,20 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
-    //BUILD CREATE EMPLOYEE REST API
+    //BUILDING CREATE EMPLOYEE REST API
     @PostMapping
     public Employee createEmployee(@RequestBody Employee employee){
         return employeeRepository.save(employee);
     }
 
-    //BUILD GET EMPLOYEE BY ID REST API
+    //BUILDING GET EMPLOYEE BY ID REST API
     @GetMapping("{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable long id){
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Employee with given id doesn't exist"));
         return ResponseEntity.ok(employee);
     }
-    //UPDATE EMPLOYEE REST API
+    //BUILDING UPDATE EMPLOYEE REST API
     @PutMapping("{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable long id, @RequestBody Employee employeeDetails){
         Employee updateEmployee = employeeRepository.findById(id).
@@ -49,7 +49,7 @@ public class EmployeeController {
 
     }
 
-    //DELETE EMPLOYEE REST API
+    //BUILDING DELETE EMPLOYEE REST API
     @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable long id){
        Employee employee= employeeRepository.findById(id).
